@@ -1,0 +1,5 @@
+
+[Rpc]
+  CertPath = "key.key"
+  KeyPath = "cert.pem"
+  Port = 3003
