@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/bitterlox/tradepanel/server/remote/proto";
+
+service TradingApi {
+  rpc Status(StatusRequest) returns (StatusResponse);
+}
+
+message StatusRequest {}
+message StatusResponse {
+    google.protobuf.Timestamp timestamp = 1;
+    string msg = 2;
+}

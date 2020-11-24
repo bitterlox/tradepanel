@@ -1,12 +1,12 @@
 {
- "name": "go-broker",
+ "name": "tradepanel",
  "description": "Enter your project description",
  "author": {
   "name": "bitterlox",
   "email": "bitterlox@pm.me"
  },
  "version": "0.1.0",
- "binaryname": "go-broker",
+ "binaryname": "trade-panel",
  "frontend": {
   "dir": "frontend",
   "install": "npm install",

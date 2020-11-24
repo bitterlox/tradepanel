@@ -5,8 +5,8 @@ import (
 	"log"
 	"time"
 
+	pb "github.com/bitterlox/tradepanel/server/remote/proto"
 	"google.golang.org/grpc"
-	pb "google.golang.org/grpc/examples/helloworld/helloworld"
 )
 
 const (
@@ -18,25 +18,25 @@ type Backend struct {
 	conn *grpc.ClientConn
 }
 
-func NewBackend() *Backend {
+func NewBackend() (*Backend, error) {
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
-		log.Fatalf("did not connect: %v", err)
+		return nil, err
 	}
 
-	return &Backend{conn: conn}
+	return &Backend{conn: conn}, nil
 }
 
 func (b *Backend) Greet(greeting string) string {
-	c := pb.NewGreeterClient(b.conn)
+	c := pb(b.conn)
 
 	// Contact the server and print out its response.
 	name := defaultName
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	_, err := c.SayHello(ctx, &pb.HelloRequest{Name: "default_"+name})
+	_, err := c.SayHello(ctx, &pb.HelloRequest{Name: "default_" + name})
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
