@@ -7,7 +7,7 @@ require (
 	github.com/leaanthony/mewn v0.10.7
 	github.com/pelletier/go-toml v1.8.1
 	github.com/wailsapp/wails v1.9.1
+	google.golang.org/genproto v0.0.0-20200806141610-86f49bd18e98 // indirect
 	google.golang.org/grpc v1.33.2
-	google.golang.org/grpc/examples v0.0.0-20201118000243-c5cf5144d7ad // indirect
 	google.golang.org/protobuf v1.25.0
 )
