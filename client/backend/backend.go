@@ -28,23 +28,15 @@ func NewBackend() (*Backend, error) {
 	return &Backend{conn: conn}, nil
 }
 
-func (b *Backend) Greet(greeting string) string {
-	c := pb(b.conn)
-
-	// Contact the server and print out its response.
-	name := defaultName
+func (b *Backend) Greet() string {
+	c := pb.NewTradingApiClient(b.conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	_, err := c.SayHello(ctx, &pb.HelloRequest{Name: "default_" + name})
+	res, err := c.Status(ctx, &pb.StatusRequest{})
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
 
-	r, err := c.SayHello(ctx, &pb.HelloRequest{Name: greeting})
-	if err != nil {
-		log.Fatalf("could not greet: %v", err)
-	}
-
-	return r.GetMessage()
+	return res.String()
 }

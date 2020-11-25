@@ -8,7 +8,7 @@
  "version": "0.1.0",
  "binaryname": "trade-panel",
  "frontend": {
-  "dir": "frontend",
+  "dir": "../../frontend",
   "install": "npm install",
   "build": "npm run build",
   "bridge": "src",

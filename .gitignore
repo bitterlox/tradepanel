@@ -20,7 +20,7 @@
 */**/.DS_Store
 */**/*tx_database*
 */**/*dapps*
-build/_vendor/pkg
+build/
 
 #*
 .#*
@@ -46,6 +46,4 @@ profile.cov
 
 # config file
 config.json
-
-#wails serve build stuff
-/client/build
+config.toml
